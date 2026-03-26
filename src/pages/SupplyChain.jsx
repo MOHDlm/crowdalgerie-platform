@@ -4,7 +4,6 @@ import { useQuery } from "@tanstack/react-query";
 import { db } from "@/firebase-config";
 import { collection, getDocs } from "firebase/firestore";
 import { Card, CardContent } from "@/components/ui/card";
-import videoFile from "./Untitled video - Made with Clipchamp (1).mp4";
 
 // ① الإضافة الوحيدة — استيراد المكون
 import MySupplyChainPanel from "../components/myprojects/MySupplyChainPanel";
@@ -1069,21 +1068,18 @@ export default function SupplyChain() {
         )}
 
         <header className="relative bg-slate-900 text-white overflow-hidden pb-20 pt-24">
-          <div className="absolute inset-0 opacity-30">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            >
-              <source
-                src={videoFile}
-                type="video/mp4"
-              />
-            </video>
+          {/* placeholder بدل الفيديو */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-slate-900/90 to-indigo-900/80" />
+          <div className="absolute inset-0 opacity-10">
+            <div
+              style={{
+                width: "100%",
+                height: "100%",
+                backgroundImage:
+                  "radial-gradient(circle at 20% 50%, #3b82f6 0%, transparent 50%), radial-gradient(circle at 80% 20%, #6366f1 0%, transparent 50%)",
+              }}
+            />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-blue-900/60 to-slate-900/80" />
           <div className="max-w-7xl mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-96 w-full hidden lg:block" />
             <div>
