@@ -24,17 +24,11 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import videoLive from "../0319.mp4";
 
 // ─────────────────────────────────────────────────────────────────
 //  LIVE TV PANEL
 // ─────────────────────────────────────────────────────────────────
 function LiveTVPanel() {
-  const videoRef = useRef(null);
-  const [muted, setMuted] = useState(true);
-  useEffect(() => {
-    if (videoRef.current) videoRef.current.muted = muted;
-  }, [muted]);
   return (
     <div
       style={{
@@ -49,6 +43,7 @@ function LiveTVPanel() {
         position: "relative",
       }}
     >
+      {/* Top bar */}
       <div
         style={{
           position: "absolute",
@@ -97,6 +92,8 @@ function LiveTVPanel() {
           </span>
         </div>
       </div>
+
+      {/* Scanlines overlay */}
       <div
         style={{
           position: "absolute",
@@ -107,40 +104,30 @@ function LiveTVPanel() {
             "repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.08) 2px,rgba(0,0,0,.08) 4px)",
         }}
       />
-      <video
-        ref={videoRef}
-        src={videoLive}
-        autoPlay
-        loop
-        muted={muted}
-        playsInline
+
+      {/* Placeholder instead of video */}
+      <div
         style={{
           width: "100%",
           height: "100%",
-          objectFit: "cover",
-          display: "block",
-        }}
-      />
-      <button
-        onClick={() => setMuted((m) => !m)}
-        style={{
-          position: "absolute",
-          bottom: 8,
-          right: 8,
-          zIndex: 10,
-          background: "rgba(0,0,20,.7)",
-          border: `1px solid ${muted ? "#FF444460" : "#00CCFF60"}`,
-          color: muted ? "#FF4444" : "#00CCFF",
-          fontSize: 12,
-          cursor: "pointer",
-          padding: "3px 7px",
-          borderRadius: 3,
+          background: "linear-gradient(135deg, #001a2e, #003344)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#00CCFF",
           fontFamily: "monospace",
-          lineHeight: 1,
+          gap: 10,
         }}
       >
-        {muted ? "🔇" : "🔊"}
-      </button>
+        <span style={{ fontSize: 32 }}>📡</span>
+        <span style={{ fontSize: 12, letterSpacing: 2, opacity: 0.8 }}>
+          البث مؤقتاً غير متاح
+        </span>
+        <span style={{ fontSize: 9, color: "#004466", letterSpacing: 1 }}>
+          SIGNAL OFFLINE
+        </span>
+      </div>
     </div>
   );
 }
@@ -437,7 +424,7 @@ ChatMiniPopup.propTypes = {
 };
 
 // ─────────────────────────────────────────────────────────────────
-//  LEFT TABS PANEL  (IMPROVED)
+//  LEFT TABS PANEL
 // ─────────────────────────────────────────────────────────────────
 function LeftTabsPanel() {
   const [activeTab, setActiveTab] = useState("supply");
@@ -450,7 +437,6 @@ function LeftTabsPanel() {
   const [voteSuccess, setVoteSuccess] = useState(null);
   const [expandedSupply, setExpandedSupply] = useState(null);
 
-  // ── data ──────────────────────────────────────────────────────
   const { data: projects = [] } = useQuery({
     queryKey: ["left-projects"],
     queryFn: async () => {
@@ -511,7 +497,6 @@ function LeftTabsPanel() {
     setShowChat(true);
   };
 
-  // vote handler
   const doVote = async (d, vt) => {
     const uid = auth?.currentUser?.uid;
     if (!uid || d.votedUsers?.includes(uid) || isVoting) return;
@@ -560,6 +545,8 @@ function LeftTabsPanel() {
     </div>
   );
 
+  EmptyState.propTypes = { text: PropTypes.string.isRequired };
+
   return (
     <div
       style={{
@@ -584,7 +571,7 @@ function LeftTabsPanel() {
         .lt-scroll::-webkit-scrollbar-thumb { background: #0a3a50; border-radius: 2px; }
       `}</style>
 
-      {/* ── TAB BAR ─────────────────────────────────────────── */}
+      {/* TAB BAR */}
       <div
         style={{
           display: "flex",
@@ -636,12 +623,12 @@ function LeftTabsPanel() {
         ))}
       </div>
 
-      {/* ── BODY ────────────────────────────────────────────── */}
+      {/* BODY */}
       <div
         className="lt-scroll"
         style={{ flex: 1, overflowY: "auto", minHeight: 0 }}
       >
-        {/* ══ SUPPLY CHAINS ══ */}
+        {/* SUPPLY CHAINS */}
         {activeTab === "supply" &&
           (projects.filter((p) => p.supply_chain?.length > 0).length === 0 ? (
             <EmptyState text="لا توجد سلاسل توريد بعد" />
@@ -659,7 +646,6 @@ function LeftTabsPanel() {
                       background: isExp ? "rgba(0,180,255,.04)" : "transparent",
                     }}
                   >
-                    {/* row */}
                     <div
                       className="lt-row"
                       style={ROW_BASE}
@@ -685,7 +671,6 @@ function LeftTabsPanel() {
                         {isExp ? "▲" : "▼"}
                       </span>
                     </div>
-                    {/* expanded */}
                     {isExp && (
                       <div style={{ padding: "0 12px 14px" }}>
                         <div
@@ -878,7 +863,7 @@ function LeftTabsPanel() {
               })
           ))}
 
-        {/* ══ VOTING ══ */}
+        {/* VOTING */}
         {activeTab === "voting" &&
           (decisions.length === 0 ? (
             <EmptyState text="لا توجد قرارات نشطة" />
@@ -909,7 +894,6 @@ function LeftTabsPanel() {
                       : "transparent",
                   }}
                 >
-                  {/* row */}
                   <div
                     className="lt-row"
                     style={ROW_BASE}
@@ -934,7 +918,6 @@ function LeftTabsPanel() {
                       {isExpanded ? "▲" : "▼"}
                     </span>
                   </div>
-                  {/* progress bar */}
                   <div
                     style={{
                       height: 4,
@@ -968,10 +951,8 @@ function LeftTabsPanel() {
                       />
                     </div>
                   </div>
-                  {/* expanded */}
                   {isExpanded && (
                     <div style={{ padding: "0 12px 14px" }}>
-                      {/* counts */}
                       <div
                         style={{
                           display: "grid",
@@ -1041,7 +1022,6 @@ function LeftTabsPanel() {
                           </div>
                         ))}
                       </div>
-                      {/* meta */}
                       <div
                         style={{
                           display: "flex",
@@ -1068,7 +1048,6 @@ function LeftTabsPanel() {
                           </span>
                         )}
                       </div>
-                      {/* description */}
                       {d.description && (
                         <p
                           style={{
@@ -1087,7 +1066,6 @@ function LeftTabsPanel() {
                           {d.description}
                         </p>
                       )}
-                      {/* vote status / buttons */}
                       {justVoted ? (
                         <div
                           style={{
@@ -1166,7 +1144,7 @@ function LeftTabsPanel() {
             })
           ))}
 
-        {/* ══ SERVICES ══ */}
+        {/* SERVICES */}
         {activeTab === "services" &&
           (services.length === 0 ? (
             <EmptyState text="لا توجد خدمات" />
@@ -1216,7 +1194,7 @@ function LeftTabsPanel() {
           ))}
       </div>
 
-      {/* ── FOOTER ──────────────────────────────────────────── */}
+      {/* FOOTER */}
       <div
         style={{
           padding: "6px 12px",
@@ -1244,7 +1222,7 @@ function LeftTabsPanel() {
         </Link>
       </div>
 
-      {/* ══ SERVICE MODAL ══ */}
+      {/* SERVICE MODAL */}
       {showModal && selectedService && (
         <div
           style={{
@@ -1280,7 +1258,6 @@ function LeftTabsPanel() {
               flexDirection: "column",
             }}
           >
-            {/* header */}
             <div
               style={{
                 background: `linear-gradient(135deg,${CAT_COLORS[selectedService.category] || "#4466FF"},${CAT_COLORS[selectedService.category] || "#4466FF"}99)`,
@@ -1361,7 +1338,6 @@ function LeftTabsPanel() {
                 </div>
               </div>
             </div>
-            {/* body */}
             <div style={{ overflowY: "auto", padding: 22, flex: 1 }}>
               <p
                 style={{
@@ -1374,7 +1350,6 @@ function LeftTabsPanel() {
               >
                 {selectedService.description}
               </p>
-              {/* pricing */}
               <div
                 style={{
                   background: "linear-gradient(135deg,#f0fff4,#e6ffed)",
@@ -1471,7 +1446,6 @@ function LeftTabsPanel() {
                   DZD
                 </div>
               </div>
-              {/* info grid */}
               <div
                 style={{
                   display: "grid",
@@ -1530,7 +1504,6 @@ function LeftTabsPanel() {
                   </div>
                 ))}
               </div>
-              {/* CTA */}
               <div
                 style={{
                   display: "grid",
@@ -1579,7 +1552,7 @@ function LeftTabsPanel() {
         </div>
       )}
 
-      {/* ══ CHAT POPUP ══ */}
+      {/* CHAT POPUP */}
       {showChat && chatService && (
         <ChatMiniPopup
           service={chatService}
@@ -1591,7 +1564,7 @@ function LeftTabsPanel() {
 }
 
 // ─────────────────────────────────────────────────────────────────
-//  ALGERIA MAP  (unchanged)
+//  ALGERIA MAP
 // ─────────────────────────────────────────────────────────────────
 function AlgeriaMap() {
   const mapRef = useRef(null),
@@ -2240,7 +2213,6 @@ function AlgeriaMap() {
     <>
       <style>{`@keyframes wm-ping-lyr{0%{transform:translate(-50%,-50%) scale(1);opacity:.9}100%{transform:translate(-50%,-50%) scale(3.5);opacity:0}}@keyframes wm-blink-dot{0%,100%{opacity:1}50%{opacity:.15}}@keyframes wm-spin-map{to{transform:rotate(360deg)}}.leaflet-control-zoom a{background:#060f08!important;color:#00FF88!important;border:1px solid #1a3a2a!important;font-family:monospace!important}.leaflet-control-zoom a:hover{background:#003322!important}.leaflet-bar{border:1px solid #1a3a2a!important;box-shadow:none!important}.leaflet-control-attribution{background:rgba(2,9,18,0.75)!important;color:#1a4a5a!important;font-size:7px!important;font-family:monospace!important}.leaflet-control-attribution a{color:#00FF88!important}.leaflet-tile{filter:hue-rotate(75deg) saturate(0.25) brightness(0.85)}.wm-tt{background:transparent!important;border:none!important;box-shadow:none!important;padding:0!important}.wm-tt::before{display:none!important}`}</style>
       <div style={{ position: "absolute", inset: 0, display: "flex" }}>
-        {/* layer sidebar */}
         <div
           style={{
             width: 210,
@@ -2493,7 +2465,6 @@ function AlgeriaMap() {
             </div>
           </div>
         </div>
-        {/* map area */}
         <div style={{ flex: 1, position: "relative" }}>
           <div
             style={{
@@ -2684,9 +2655,6 @@ export default function QualityBadge() {
     },
   });
 
-  // ── الترتيب الجديد للبطاقات ──
-  // صف أول: Shared Supply Chains | Shared Services | Decision Making
-  // صف ثاني: Funding Priority | Enhanced Credibility | Subcontracting Opportunities
   const privileges = [
     {
       id: "supply-chain",
@@ -2811,12 +2779,12 @@ export default function QualityBadge() {
         dir="ltr"
       >
         <div className="wm-split">
-          {/* ═══ LEFT COLUMN ═══ */}
+          {/* LEFT COLUMN */}
           <div
             className="wm-left"
             ref={leftColRef}
           >
-            {/* video */}
+            {/* video placeholder */}
             <div
               style={{
                 height: `${leftVideoPct}%`,
@@ -2914,7 +2882,7 @@ export default function QualityBadge() {
             </div>
           </div>
 
-          {/* ═══ RIGHT COLUMN ═══ */}
+          {/* RIGHT COLUMN */}
           <div
             className="wm-right"
             ref={rightColRef}
