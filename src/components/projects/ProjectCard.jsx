@@ -66,7 +66,7 @@ export default function ProjectCard({ project = {}, onClick }) {
       transition={{ duration: 0.3 }}
     >
       <Card
-        className="h-full bg-white/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 cursor-pointer border-0 overflow-hidden"
+        className="h-full bg-[#161b27] hover:shadow-2xl transition-all duration-300 cursor-pointer border border-slate-800 overflow-hidden"
         onClick={onClick}
       >
         <div className="relative h-48 bg-gradient-to-br from-blue-600 to-blue-800 overflow-hidden">
@@ -111,10 +111,10 @@ export default function ProjectCard({ project = {}, onClick }) {
         <CardHeader className="pb-3">
           <div className="flex items-start justify-between">
             <div>
-              <h3 className="text-xl font-bold text-blue-900 mb-1">
+              <h3 className="text-xl font-bold text-slate-200 mb-1">
                 {project.name_ar || project.title || "مشروع بدون عنوان"}
               </h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-slate-400">
                 {project.company_name || ""}
               </p>
             </div>
@@ -133,20 +133,20 @@ export default function ProjectCard({ project = {}, onClick }) {
         </CardHeader>
 
         <CardContent className="space-y-4">
-          <p className="text-gray-700 line-clamp-2 leading-relaxed">
+          <p className="text-slate-400 line-clamp-2 leading-relaxed">
             {project.description_ar || project.description || "لا يوجد وصف"}
           </p>
 
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
-              <span className="text-gray-600">التمويل المحقق</span>
-              <span className="font-bold text-blue-900">
+              <span className="text-slate-500">التمويل المحقق</span>
+              <span className="font-bold text-slate-200">
                 {fundingPercentage}%
               </span>
             </div>
 
             {/* الشريط الديناميكي */}
-            <div className="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
+            <div className="w-full bg-slate-700 rounded-full h-2 overflow-hidden">
               <div
                 className="h-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full transition-all duration-1000 relative overflow-hidden"
                 style={{ width: `${fundingPercentage}%` }}
@@ -156,10 +156,10 @@ export default function ProjectCard({ project = {}, onClick }) {
             </div>
 
             <div className="flex justify-between text-sm">
-              <span className="font-semibold text-blue-900">
+              <span className="font-semibold text-slate-200">
                 {(raised / 1000).toFixed(0)} ألف دج
               </span>
-              <span className="text-gray-600">
+              <span className="text-slate-500">
                 من {(goal / 1000).toFixed(0)} ألف دج
               </span>
             </div>
@@ -183,8 +183,8 @@ export default function ProjectCard({ project = {}, onClick }) {
           </div>
 
           {project.return_percentage && (
-            <div className="bg-green-50 rounded-lg p-3 flex items-center justify-between">
-              <span className="text-sm text-gray-700">العائد المتوقع</span>
+            <div className="bg-green-900/20 border border-green-800/40 rounded-lg p-3 flex items-center justify-between">
+              <span className="text-sm text-slate-400">العائد المتوقع</span>
               <span className="text-lg font-bold text-green-700">
                 {project.return_percentage}%
               </span>

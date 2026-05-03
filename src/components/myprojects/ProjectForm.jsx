@@ -196,9 +196,9 @@ export default function ProjectForm({
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
     >
-      <Card className="mb-8 bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+      <Card className="mb-8 bg-[#161b27] border border-slate-800 shadow-lg">
         <CardHeader>
-          <CardTitle className="text-2xl text-blue-900">
+          <CardTitle className="text-2xl text-slate-100">
             {project ? "تعديل المشروع" : "مشروع جديد"}
           </CardTitle>
         </CardHeader>
@@ -209,7 +209,7 @@ export default function ProjectForm({
           >
             {/* القسم الأول: بيانات المشروع الأساسية */}
             <div>
-              <h3 className="text-lg font-semibold text-blue-900 mb-4">
+              <h3 className="text-lg font-semibold text-slate-200 mb-4">
                 📋 بيانات المشروع
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -387,8 +387,8 @@ export default function ProjectForm({
             </div>
 
             {/* القسم الثاني: معايير التقييم */}
-            <div className="border-t pt-6">
-              <h3 className="text-lg font-semibold text-blue-900 mb-4">
+            <div className="border-t border-slate-800 pt-6">
+              <h3 className="text-lg font-semibold text-slate-200 mb-4">
                 ⭐ معايير التقييم (من 0-25)
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -445,30 +445,30 @@ export default function ProjectForm({
               </div>
 
               {/* النقاط الكلية */}
-              <div className="mt-6 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-900">
+              <div className="mt-6 p-4 bg-blue-900/20 rounded-lg border-l-4 border-blue-500">
                 <div className="flex justify-between items-center">
                   <div>
-                    <p className="text-sm text-gray-600">النقاط الكلية</p>
-                    <p className="text-3xl font-bold text-blue-900">
+                    <p className="text-sm text-slate-400">النقاط الكلية</p>
+                    <p className="text-3xl font-bold text-slate-100">
                       {totalScore}/100
                     </p>
                   </div>
                   <div>
                     {qualityBadge ? (
                       <div className="text-center">
-                        <p className="text-lg font-semibold text-green-600">
+                        <p className="text-lg font-semibold text-green-400">
                           ✅ وسم الجودة
                         </p>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-slate-400">
                           مؤهل للحصول على الامتيازات
                         </p>
                       </div>
                     ) : (
                       <div className="text-center">
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-slate-400">
                           ينقص {85 - totalScore} نقطة
                         </p>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-xs text-slate-500">
                           للحصول على وسم الجودة
                         </p>
                       </div>
@@ -479,11 +479,11 @@ export default function ProjectForm({
             </div>
 
             {/* ── قسم سلسلة التوريد ── */}
-            <div className="border-t pt-6">
-              <h3 className="text-lg font-semibold text-blue-900 mb-1">
+            <div className="border-t border-slate-800 pt-6">
+              <h3 className="text-lg font-semibold text-slate-200 mb-1">
                 🔗 سلسلة التوريد
               </h3>
-              <p className="text-sm text-gray-500 mb-4">
+              <p className="text-sm text-slate-500 mb-4">
                 أضف نقاط سلسلة التوريد الخاصة بمشروعك — ستظهر تلقائياً على
                 الخريطة التفاعلية مربوطة بخطوط شبكة.
               </p>
@@ -493,10 +493,10 @@ export default function ProjectForm({
                 {(formData.supply_chain || []).map((node, idx) => (
                   <div
                     key={idx}
-                    className="grid grid-cols-1 gap-3 p-4 bg-blue-50 rounded-lg border border-blue-200 relative"
+                    className="grid grid-cols-1 gap-3 p-4 bg-blue-900/20 rounded-lg border border-blue-800/40 relative"
                   >
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-xs font-bold text-blue-700">
+                      <span className="text-xs font-bold text-blue-300">
                         نقطة {idx + 1}
                       </span>
                       <button
@@ -516,7 +516,7 @@ export default function ProjectForm({
                             updateSupplyNode(idx, "name", e.target.value)
                           }
                           placeholder="مثال: مستودع وهران"
-                          className="w-full border rounded px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-400"
+                          className="w-full bg-[#0a0e17] border border-slate-700 text-slate-200 rounded px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-400 placeholder:text-slate-500"
                           required
                         />
                       </div>
@@ -527,7 +527,7 @@ export default function ProjectForm({
                           onChange={(e) =>
                             updateSupplyNode(idx, "type", e.target.value)
                           }
-                          className="w-full border rounded px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-400"
+                          className="w-full bg-[#0a0e17] border border-slate-700 text-slate-200 rounded px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-400 placeholder:text-slate-500"
                         >
                           {SUPPLY_NODE_TYPES.map((t) => (
                             <option
@@ -546,7 +546,7 @@ export default function ProjectForm({
                           onChange={(e) =>
                             updateSupplyNode(idx, "wilaya", e.target.value)
                           }
-                          className="w-full border rounded px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-400"
+                          className="w-full bg-[#0a0e17] border border-slate-700 text-slate-200 rounded px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-400 placeholder:text-slate-500"
                           required
                         >
                           <option value="">-- اختر الولاية --</option>
@@ -568,7 +568,7 @@ export default function ProjectForm({
                             updateSupplyNode(idx, "notes", e.target.value)
                           }
                           placeholder="اختياري"
-                          className="w-full border rounded px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-400"
+                          className="w-full bg-[#0a0e17] border border-slate-700 text-slate-200 rounded px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-400 placeholder:text-slate-500"
                         />
                       </div>
                     </div>
@@ -580,7 +580,7 @@ export default function ProjectForm({
               <button
                 type="button"
                 onClick={addSupplyNode}
-                className="w-full py-3 border-2 border-dashed border-blue-300 rounded-lg text-blue-600 font-semibold hover:border-blue-500 hover:bg-blue-50 transition-all flex items-center justify-center gap-2"
+                className="w-full py-3 border-2 border-dashed border-slate-700 rounded-lg text-blue-400 font-semibold hover:border-blue-500 hover:bg-slate-800 transition-all flex items-center justify-center gap-2"
               >
                 <span className="text-lg">+</span>
                 إضافة نقطة في سلسلة التوريد
@@ -588,8 +588,8 @@ export default function ProjectForm({
 
               {/* معاينة */}
               {(formData.supply_chain || []).length > 0 && (
-                <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded-lg">
-                  <p className="text-xs font-bold text-green-700 mb-1">
+                <div className="mt-3 p-3 bg-green-900/20 border border-green-800/40 rounded-lg">
+                  <p className="text-xs font-bold text-green-400 mb-1">
                     ✓ {formData.supply_chain.length} نقطة — ستظهر على الخريطة
                     عند الحفظ
                   </p>
@@ -597,7 +597,7 @@ export default function ProjectForm({
                     {formData.supply_chain.map((n, i) => (
                       <span
                         key={i}
-                        className="text-xs bg-white border border-green-300 text-green-700 px-2 py-1 rounded-full"
+                        className="text-xs bg-slate-800 border border-green-800 text-green-400 px-2 py-1 rounded-full"
                       >
                         {n.type} {n.wilaya ? `📍${n.wilaya}` : ""}
                       </span>
@@ -613,6 +613,7 @@ export default function ProjectForm({
                 type="button"
                 variant="outline"
                 onClick={onCancel}
+                className="border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-slate-100"
               >
                 إلغاء
               </Button>

@@ -11,6 +11,8 @@ import {
   Bell,
   Menu,
   X,
+  Sun,
+  Moon,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -18,21 +20,9 @@ import logoImage from "./img/ChatGPT Image Nov 9, 2025, 10_15_53 AM.png";
 
 // Navigation Items
 const navigationItems = [
-  {
-    title: "Home",
-    url: createPageUrl("Home"),
-    icon: Home,
-  },
-  {
-    title: "Projects",
-    url: createPageUrl("Projects"),
-    icon: Briefcase,
-  },
-  {
-    title: " Badge",
-    url: createPageUrl("QualityBadge"),
-    icon: Award,
-  },
+  { title: "Home", url: createPageUrl("Home"), icon: Home },
+  { title: "Projects", url: createPageUrl("Projects"), icon: Briefcase },
+  { title: " Badge", url: createPageUrl("QualityBadge"), icon: Award },
   {
     title: "Dashboard",
     url: createPageUrl("Dashboard"),
@@ -44,12 +34,23 @@ export default function Layout({ children }) {
   const location = useLocation();
   const [user, setUser] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "dark");
 
-  // صفحة الـ Home فقط تأخذ navbar شفاف
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === "light") {
+      root.classList.add("light");
+    } else {
+      root.classList.remove("light");
+    }
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
+
+  // صفحة Home فقط تأخذ navbar شفاف
   const isHomePage =
-    location.pathname === "/" ||
-    location.pathname === createPageUrl("Home") ||
-    location.pathname === createPageUrl("QualityBadge");
+    location.pathname === "/" || location.pathname === createPageUrl("Home");
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -73,7 +74,7 @@ export default function Layout({ children }) {
 
   return (
     <div
-      className="min-h-screen"
+      className="min-h-screen bg-[#0a0e17]"
       dir="ltr"
     >
       <style>{`
@@ -89,23 +90,53 @@ export default function Layout({ children }) {
           font-family: 'Segoe UI', 'Inter', 'Roboto', 'Helvetica Neue', sans-serif;
         }
         body {
+          background-color: #0a0e17;
           direction: ltr;
           text-align: left;
           margin: 0;
           padding: 0;
         }
+
+        /* ===== LIGHT MODE ===== */
+        html.light body { background-color: #f1f5f9 !important; }
+        html.light [class*="#0a0e17"] { background-color: #f1f5f9 !important; }
+        html.light [class*="#161b27"] { background-color: #ffffff !important; }
+        html.light [class*="#0d1117"] { background-color: #ffffff !important; }
+        html.light [class*="#0f1117"] { background-color: #f8fafc !important; }
+
+        html.light .text-slate-100,
+        html.light .text-slate-200 { color: #0f172a !important; }
+        html.light .text-slate-300 { color: #334155 !important; }
+        html.light .text-slate-400 { color: #64748b !important; }
+        html.light .text-slate-500 { color: #94a3b8 !important; }
+
+        html.light .border-slate-800,
+        html.light .border-slate-700 { border-color: #e2e8f0 !important; }
+        html.light .bg-slate-700 { background-color: #e2e8f0 !important; }
+        html.light .bg-slate-800\\/50 { background-color: #f1f5f9 !important; }
+
+        html.light header { background-color: #ffffff !important; border-bottom-color: #e2e8f0 !important; }
+        html.light header a { color: #374151 !important; }
+
+        html.light input,
+        html.light textarea,
+        html.light select {
+          background-color: #ffffff !important;
+          color: #1e293b !important;
+          border-color: #cbd5e1 !important;
+        }
+
+        html.light .bg-\\[\\#0a0e17\\]\\/80,
+        html.light [class*="#0a0e17/"] { background-color: rgba(241,245,249,0.8) !important; }
       `}</style>
 
-      {/* 
-        - صفحة Home  → fixed + شفاف 100% (المحتوى يبدأ من top:0 خلف الـ navbar)
-        - باقي الصفحات → sticky + أبيض واضح
-      */}
       <header
         className={`z-50 transition-all duration-300 ${
           isHomePage
             ? "fixed top-0 left-0 w-full bg-transparent border-b border-white/10"
-            : "sticky top-0 w-full bg-white border-b border-gray-200 shadow-sm"
+            : "sticky top-0 w-full border-b border-slate-800"
         }`}
+        style={isHomePage ? {} : { background: "#0d1117" }}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
@@ -134,7 +165,7 @@ export default function Layout({ children }) {
                         ? "bg-gradient-to-r from-blue-900 to-blue-700 text-white shadow-md"
                         : isHomePage
                           ? "text-gray-100 hover:bg-white/10 hover:text-white"
-                          : "text-gray-700 hover:bg-blue-50 hover:text-blue-700"
+                          : "text-slate-300 hover:bg-white/10 hover:text-white"
                     }`}
                   >
                     <item.icon className="w-5 h-5" />
@@ -152,18 +183,18 @@ export default function Layout({ children }) {
                     className={`relative p-2 rounded-lg transition-colors duration-200 hidden md:block ${
                       isHomePage
                         ? "hover:bg-white/10 text-white"
-                        : "hover:bg-gray-100 text-gray-600"
+                        : "hover:bg-white/10 text-slate-300"
                     }`}
                   >
                     <Bell className="w-5 h-5" />
-                    <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+                    <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
                   </button>
 
                   <div
                     className={`hidden md:flex items-center gap-3 px-4 py-2 rounded-lg ${
                       isHomePage
                         ? "bg-white/10 text-white"
-                        : "bg-blue-50 text-blue-900"
+                        : "bg-white/10 text-slate-200"
                     }`}
                   >
                     <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center border-2 border-white/20">
@@ -172,9 +203,7 @@ export default function Layout({ children }) {
                       </span>
                     </div>
                     <div className="text-left">
-                      <p
-                        className={`text-sm font-semibold ${isHomePage ? "text-white" : "text-blue-900"}`}
-                      >
+                      <p className="text-sm font-semibold text-slate-200">
                         {user.full_name || "User"}
                       </p>
                       <div className="flex items-center gap-2">
@@ -184,9 +213,7 @@ export default function Layout({ children }) {
                         >
                           {user.membership_tier || "Basic"}
                         </Badge>
-                        <span
-                          className={`text-xs ${isHomePage ? "text-gray-300" : "text-gray-600"}`}
-                        >
+                        <span className="text-xs text-slate-400">
                           Power: {user.voting_power || 1}
                         </span>
                       </div>
@@ -197,11 +224,7 @@ export default function Layout({ children }) {
                     variant="ghost"
                     size="sm"
                     onClick={handleLogout}
-                    className={`hidden md:flex items-center gap-2 ${
-                      isHomePage
-                        ? "text-red-300 hover:text-red-400 hover:bg-white/10"
-                        : "text-red-600 hover:bg-red-50"
-                    }`}
+                    className="hidden md:flex items-center gap-2 text-red-400 hover:text-red-300 hover:bg-white/10"
                   >
                     <LogOut className="w-4 h-4" />
                     <span>Logout</span>
@@ -217,14 +240,27 @@ export default function Layout({ children }) {
                 </Button>
               )}
 
+              {/* Theme Toggle */}
+              <button
+                onClick={toggleTheme}
+                className={`p-2 rounded-lg transition-colors duration-200 ${
+                  isHomePage
+                    ? "hover:bg-white/10 text-white"
+                    : "hover:bg-white/10 text-slate-300"
+                }`}
+                aria-label="Toggle theme"
+              >
+                {theme === "dark" ? (
+                  <Sun className="w-5 h-5" />
+                ) : (
+                  <Moon className="w-5 h-5" />
+                )}
+              </button>
+
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className={`lg:hidden p-2 rounded-lg transition-colors duration-200 ${
-                  isHomePage
-                    ? "text-white hover:bg-white/10"
-                    : "text-gray-700 hover:bg-gray-100"
-                }`}
+                className="lg:hidden p-2 rounded-lg transition-colors duration-200 text-slate-300 hover:bg-white/10"
               >
                 {mobileMenuOpen ? (
                   <X className="w-6 h-6" />
@@ -237,13 +273,7 @@ export default function Layout({ children }) {
 
           {/* Mobile Navigation Dropdown */}
           {mobileMenuOpen && (
-            <div
-              className={`lg:hidden border-t py-4 shadow-xl rounded-b-2xl absolute left-0 right-0 top-20 px-4 ${
-                isHomePage
-                  ? "border-white/10 bg-black/60 backdrop-blur-md"
-                  : "border-gray-200 bg-white"
-              }`}
-            >
+            <div className="lg:hidden border-t border-slate-800 py-4 shadow-xl rounded-b-2xl absolute left-0 right-0 top-20 px-4 bg-[#0d1117]">
               <nav className="flex flex-col gap-2">
                 {navigationItems.map((item) => (
                   <Link
@@ -253,9 +283,7 @@ export default function Layout({ children }) {
                     className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 font-semibold ${
                       location.pathname === item.url
                         ? "bg-gradient-to-r from-blue-900 to-blue-700 text-white shadow-md"
-                        : isHomePage
-                          ? "text-gray-100 hover:bg-white/10"
-                          : "text-gray-700 hover:bg-blue-50"
+                        : "text-slate-300 hover:bg-white/10"
                     }`}
                   >
                     <item.icon className="w-5 h-5" />
@@ -265,7 +293,7 @@ export default function Layout({ children }) {
               </nav>
 
               {user && (
-                <div className="mt-4 pt-4 border-t border-white/10 space-y-3">
+                <div className="mt-4 pt-4 border-t border-slate-800 space-y-3">
                   <div className="flex items-center gap-3 px-4">
                     <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center">
                       <span className="text-white font-bold text-sm">
@@ -273,16 +301,10 @@ export default function Layout({ children }) {
                       </span>
                     </div>
                     <div className="flex-1 text-left">
-                      <p
-                        className={`font-semibold text-sm ${isHomePage ? "text-white" : "text-gray-900"}`}
-                      >
+                      <p className="font-semibold text-sm text-slate-200">
                         {user.full_name || "User"}
                       </p>
-                      <p
-                        className={`text-xs ${isHomePage ? "text-gray-300" : "text-gray-500"}`}
-                      >
-                        {user.email}
-                      </p>
+                      <p className="text-xs text-slate-500">{user.email}</p>
                     </div>
                   </div>
                   <button
@@ -299,11 +321,7 @@ export default function Layout({ children }) {
         </div>
       </header>
 
-      {/* 
-        - Home: بدون padding لأن الـ navbar فوق المحتوى
-        - باقي الصفحات: الـ navbar sticky لا يحتاج padding
-      */}
-      <main className={`min-h-screen ${isHomePage ? "" : "bg-slate-50"}`}>
+      <main className={`min-h-screen ${isHomePage ? "" : "bg-[#0a0e17]"}`}>
         {children}
       </main>
     </div>

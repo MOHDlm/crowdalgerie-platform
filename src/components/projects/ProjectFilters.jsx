@@ -16,10 +16,10 @@ const sectors = [
 
 export default function ProjectFilters({ sectorFilter, setSectorFilter }) {
   return (
-    <Card className="mb-6 bg-white/80 backdrop-blur-sm border-0 shadow-md">
+    <Card className="mb-6 bg-[#161b27] border border-slate-800 shadow-md">
       <CardContent className="p-4">
         <div className="flex items-center gap-3 flex-wrap">
-          <div className="flex items-center gap-2 text-gray-600">
+          <div className="flex items-center gap-2 text-slate-400">
             <Filter className="w-4 h-4" />
             <span className="font-semibold">القطاع:</span>
           </div>
@@ -29,8 +29,8 @@ export default function ProjectFilters({ sectorFilter, setSectorFilter }) {
               variant={sectorFilter === sector.value ? "default" : "outline"}
               className={`cursor-pointer transition-all duration-200 ${
                 sectorFilter === sector.value 
-                  ? "bg-blue-900 text-white" 
-                  : "hover:bg-blue-50"
+                  ? "bg-blue-700 text-white border-blue-600"
+                  : "text-slate-400 border-slate-700 hover:bg-slate-800 hover:text-slate-200"
               }`}
               onClick={() => setSectorFilter(sector.value)}
             >

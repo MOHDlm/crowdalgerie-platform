@@ -105,15 +105,15 @@ export default function Projects() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 p-6 pt-24">
+    <div className="min-h-screen bg-[#0a0e17] p-6 pt-24">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="mb-8 flex items-center justify-between">
           <div>
-            <h1 className="text-4xl font-bold text-blue-900 mb-2">
+            <h1 className="text-4xl font-bold text-slate-100 mb-2">
               Available Projects
             </h1>
-            <p className="text-gray-600 text-lg">
+            <p className="text-slate-400 text-lg">
               Explore investment opportunities in emerging startups
             </p>
           </div>
@@ -134,7 +134,7 @@ export default function Projects() {
               placeholder="Search for a project..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 py-6 text-lg bg-white shadow-sm"
+              className="pl-10 py-6 text-lg bg-[#161b27] border-slate-700 text-slate-200 placeholder:text-slate-500 shadow-sm"
             />
           </div>
 
@@ -144,7 +144,7 @@ export default function Projects() {
             onValueChange={setStatusFilter}
             className="w-full md:w-auto"
           >
-            <TabsList className="bg-white shadow-sm h-12">
+            <TabsList className="bg-[#161b27] border border-slate-700 h-12">
               <TabsTrigger
                 value="all"
                 className="h-10 px-6"
@@ -200,11 +200,11 @@ export default function Projects() {
 
         {/* Empty State */}
         {filteredProjects.length === 0 && !isLoading && (
-          <div className="text-center py-20 bg-white/50 rounded-xl border border-dashed border-gray-300">
-            <p className="text-gray-600 text-xl font-medium">
+          <div className="text-center py-20 bg-[#161b27] rounded-xl border border-dashed border-slate-700">
+            <p className="text-slate-400 text-xl font-medium">
               No projects found
             </p>
-            <p className="text-gray-400 mt-2">
+            <p className="text-slate-600 mt-2">
               Try adjusting your search or filters
             </p>
           </div>

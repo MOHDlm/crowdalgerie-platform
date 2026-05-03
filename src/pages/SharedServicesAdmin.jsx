@@ -203,10 +203,10 @@ export default function SharedServicesAdmin() {
   };
 
   const inputCls =
-    "w-full px-4 py-3 border-2 border-slate-300 rounded-lg focus:border-indigo-500 focus:outline-none transition-colors";
+    "w-full px-4 py-3 border border-slate-700 rounded-lg bg-[#0a0e17] text-slate-200 placeholder:text-slate-500 focus:border-indigo-500 focus:outline-none transition-colors";
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50 to-slate-100 p-6">
+    <div className="min-h-screen bg-[#0a0e17] p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -220,10 +220,10 @@ export default function SharedServicesAdmin() {
                 <Building2 className="w-9 h-9 text-white" />
               </div>
               <div>
-                <h1 className="text-4xl font-bold text-slate-900">
+                <h1 className="text-4xl font-bold text-slate-100">
                   إدارة الخدمات المشتركة
                 </h1>
-                <p className="text-slate-600 text-lg">
+                <p className="text-slate-400 text-lg">
                   إضافة وتعديل الخدمات المتاحة للأعضاء
                 </p>
               </div>
@@ -258,7 +258,7 @@ export default function SharedServicesAdmin() {
               exit={{ opacity: 0, height: 0 }}
               className="mb-8"
             >
-              <Card className="bg-white shadow-xl border-2 border-indigo-200">
+              <Card className="bg-[#161b27] shadow-xl border border-slate-800">
                 <CardHeader className="bg-gradient-to-r from-indigo-600 to-indigo-700">
                   <CardTitle className="text-white text-2xl">
                     {editingService ? "تعديل الخدمة" : "إضافة خدمة جديدة"}
@@ -269,7 +269,7 @@ export default function SharedServicesAdmin() {
                     {/* Names */}
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-sm font-semibold text-slate-700 mb-2">
+                        <label className="block text-sm font-semibold text-slate-400 mb-2">
                           اسم الخدمة (بالعربية) *
                         </label>
                         <input
@@ -281,7 +281,7 @@ export default function SharedServicesAdmin() {
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-slate-700 mb-2">
+                        <label className="block text-sm font-semibold text-slate-400 mb-2">
                           Service Name (English) *
                         </label>
                         <input
@@ -296,7 +296,7 @@ export default function SharedServicesAdmin() {
 
                     {/* Description */}
                     <div>
-                      <label className="block text-sm font-semibold text-slate-700 mb-2">
+                      <label className="block text-sm font-semibold text-slate-400 mb-2">
                         الوصف *
                       </label>
                       <textarea
@@ -311,13 +311,13 @@ export default function SharedServicesAdmin() {
                     {/* Category + Provider */}
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-sm font-semibold text-slate-700 mb-2">
+                        <label className="block text-sm font-semibold text-slate-400 mb-2">
                           الفئة *
                         </label>
                         <select
                           value={formData.category}
                           onChange={(e) => set("category", e.target.value)}
-                          className={`${inputCls} bg-white`}
+                          className={`${inputCls} bg-[#0a0e17] text-slate-200`}
                         >
                           <option value="legal">قانونية - Legal</option>
                           <option value="accounting">
@@ -328,7 +328,7 @@ export default function SharedServicesAdmin() {
                         </select>
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-slate-700 mb-2">
+                        <label className="block text-sm font-semibold text-slate-400 mb-2">
                           مزود الخدمة *
                         </label>
                         <input
@@ -376,7 +376,7 @@ export default function SharedServicesAdmin() {
                     {/* Pricing */}
                     <div className="grid md:grid-cols-3 gap-6">
                       <div>
-                        <label className="block text-sm font-semibold text-slate-700 mb-2">
+                        <label className="block text-sm font-semibold text-slate-400 mb-2">
                           السعر قبل الخصم (DZD) *
                         </label>
                         <input
@@ -388,7 +388,7 @@ export default function SharedServicesAdmin() {
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-slate-700 mb-2">
+                        <label className="block text-sm font-semibold text-slate-400 mb-2">
                           السعر بعد الخصم (DZD) *
                         </label>
                         <input
@@ -400,7 +400,7 @@ export default function SharedServicesAdmin() {
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-slate-700 mb-2">
+                        <label className="block text-sm font-semibold text-slate-400 mb-2">
                           نسبة الخصم (%) *
                         </label>
                         <input
@@ -418,7 +418,7 @@ export default function SharedServicesAdmin() {
                     {/* Duration + Rating */}
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-sm font-semibold text-slate-700 mb-2">
+                        <label className="block text-sm font-semibold text-slate-400 mb-2">
                           المدة *
                         </label>
                         <input
@@ -430,7 +430,7 @@ export default function SharedServicesAdmin() {
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-slate-700 mb-2">
+                        <label className="block text-sm font-semibold text-slate-400 mb-2">
                           التقييم (0-5)
                         </label>
                         <input
@@ -447,7 +447,7 @@ export default function SharedServicesAdmin() {
                     </div>
 
                     {/* Available */}
-                    <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg">
+                    <div className="flex items-center gap-3 p-4 bg-slate-800/50 rounded-lg">
                       <input
                         type="checkbox"
                         id="available"
@@ -457,7 +457,7 @@ export default function SharedServicesAdmin() {
                       />
                       <label
                         htmlFor="available"
-                        className="text-sm font-semibold text-slate-700 cursor-pointer"
+                        className="text-sm font-semibold text-slate-300 cursor-pointer"
                       >
                         الخدمة متاحة للحجز
                       </label>
@@ -483,7 +483,7 @@ export default function SharedServicesAdmin() {
                       </button>
                       <button
                         onClick={handleCancel}
-                        className="flex-1 border-2 border-slate-300 text-slate-700 py-3 rounded-lg font-semibold hover:bg-slate-50 transition-all flex items-center justify-center gap-2"
+                        className="flex-1 border border-slate-700 text-slate-300 py-3 rounded-lg font-semibold hover:bg-slate-800 transition-all flex items-center justify-center gap-2"
                       >
                         <X className="w-5 h-5" />
                         إلغاء
@@ -503,7 +503,7 @@ export default function SharedServicesAdmin() {
             <p className="text-slate-600 mt-4 font-semibold">جاري التحميل...</p>
           </div>
         ) : services.length === 0 ? (
-          <Card className="bg-white shadow-lg border-2 border-slate-100">
+          <Card className="bg-[#161b27] shadow-lg border border-slate-800">
             <CardContent className="p-12 text-center">
               <Building2 className="w-16 h-16 text-slate-400 mx-auto mb-4" />
               <p className="text-xl text-slate-600 mb-2">
@@ -523,12 +523,12 @@ export default function SharedServicesAdmin() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.05 }}
               >
-                <Card className="bg-white hover:shadow-xl transition-all border-2 border-slate-100">
+                <Card className="bg-[#161b27] hover:shadow-xl transition-all border border-slate-800">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1 min-w-0">
                         <div className="flex items-start gap-3 mb-2 flex-wrap">
-                          <h3 className="text-2xl font-bold text-slate-900">
+                          <h3 className="text-2xl font-bold text-slate-200">
                             {service.name_en} | {service.name_ar}
                           </h3>
                           {service.available && (
@@ -551,12 +551,12 @@ export default function SharedServicesAdmin() {
                         <p className="text-indigo-600 font-semibold mb-2 text-sm">
                           {service.category}
                         </p>
-                        <p className="text-slate-600 mb-3 leading-relaxed">
+                        <p className="text-slate-400 mb-3 leading-relaxed">
                           {service.description}
                         </p>
                         <div className="flex flex-wrap gap-4 text-sm">
-                          <span className="text-slate-600">
-                            <strong className="text-slate-800">
+                          <span className="text-slate-400">
+                            <strong className="text-slate-300">
                               مزود الخدمة:
                             </strong>{" "}
                             {service.provider}

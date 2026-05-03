@@ -139,11 +139,11 @@ export default function MyProjects() {
   // إذا لم يكن المستخدم مسجل دخول
   if (!currentUser) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 p-6">
+      <div className="min-h-screen bg-[#0a0e17] p-6">
         <div className="max-w-6xl mx-auto">
-          <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+          <Card className="bg-[#161b27] border border-slate-800 shadow-lg">
             <CardContent className="p-12 text-center">
-              <p className="text-xl text-gray-600 mb-4">
+              <p className="text-xl text-slate-400 mb-4">
                 يجب تسجيل الدخول أولاً لإضافة مشاريع
               </p>
             </CardContent>
@@ -154,12 +154,12 @@ export default function MyProjects() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 p-6">
+    <div className="min-h-screen bg-[#0a0e17] p-6">
       <div className="max-w-6xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <div>
-            <h1 className="text-4xl font-bold text-blue-900 mb-2">مشاريعي</h1>
-            <p className="text-gray-600 text-lg">أضف وأدر مشاريعك الخاصة</p>
+            <h1 className="text-4xl font-bold text-slate-100 mb-2">مشاريعي</h1>
+            <p className="text-slate-400 text-lg">أضف وأدر مشاريعك الخاصة</p>
           </div>
           <Button
             onClick={() => {
@@ -189,13 +189,13 @@ export default function MyProjects() {
 
         {isLoading ? (
           <div className="text-center py-20">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900" />
-            <p className="text-gray-600 mt-4">جاري التحميل...</p>
+            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-400" />
+            <p className="text-slate-400 mt-4">جاري التحميل...</p>
           </div>
         ) : myProjects.length === 0 ? (
-          <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+          <Card className="bg-[#161b27] border border-slate-800 shadow-lg">
             <CardContent className="p-12 text-center">
-              <p className="text-xl text-gray-600 mb-4">لم تضف أي مشروع بعد</p>
+              <p className="text-xl text-slate-400 mb-4">لم تضف أي مشروع بعد</p>
               <Button
                 onClick={() => setShowForm(true)}
                 className="bg-gradient-to-r from-blue-900 to-blue-700"

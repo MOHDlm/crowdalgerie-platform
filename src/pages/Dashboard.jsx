@@ -251,7 +251,7 @@ export default function Dashboard() {
   // Loading state
   if (projectsLoading || investmentsLoading || servicesLoading) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+      <div className="min-h-screen bg-[#0a0e17] flex items-center justify-center">
         <div className="text-center">
           <div className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-solid border-blue-600 border-r-transparent"></div>
           <p className="mt-4 text-slate-600 font-medium">Loading data...</p>
@@ -263,7 +263,7 @@ export default function Dashboard() {
   return (
     <div
       dir="ltr"
-      className="min-h-screen bg-slate-50/50 p-6 relative overflow-hidden"
+      className="min-h-screen bg-[#0a0e17] p-6 relative overflow-hidden"
     >
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-blue-50/80 to-transparent -z-10" />

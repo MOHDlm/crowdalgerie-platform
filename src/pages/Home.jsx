@@ -95,7 +95,7 @@ export default function Home() {
 
   return (
     <div
-      className="min-h-screen bg-slate-50"
+      className="min-h-screen bg-[#0a0e17]"
       dir="ltr"
     >
       {/* ================= HERO SECTION ================= */}
@@ -111,7 +111,7 @@ export default function Home() {
 
         <div className="absolute inset-0 bg-black/60 z-0" />
 
-        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-slate-50 via-slate-50/80 to-transparent z-10" />
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#0a0e17] via-[#0a0e17]/80 to-transparent z-10" />
 
         <div className="container mx-auto px-6 relative z-20 pb-20">
           <motion.div
@@ -174,12 +174,12 @@ export default function Home() {
               {[1, 2, 3].map((i) => (
                 <Card
                   key={i}
-                  className="bg-white shadow-2xl border-0"
+                  className="bg-[#161b27] shadow-2xl border border-slate-800"
                 >
                   <CardContent className="p-6">
                     <div className="animate-pulse">
-                      <div className="h-4 bg-gray-200 rounded w-1/2 mb-3"></div>
-                      <div className="h-8 bg-gray-200 rounded w-3/4"></div>
+                      <div className="h-4 bg-slate-700 rounded w-1/2 mb-3"></div>
+                      <div className="h-8 bg-slate-700 rounded w-3/4"></div>
                     </div>
                   </CardContent>
                 </Card>
@@ -192,21 +192,21 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
               >
-                <Card className="bg-white shadow-2xl border-0">
+                <Card className="bg-[#161b27] shadow-2xl border border-slate-800">
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-gray-500 text-sm font-bold mb-2">
+                        <p className="text-slate-400 text-sm font-bold mb-2">
                           Total Funding
                         </p>
-                        <h3 className="text-3xl font-extrabold text-blue-900">
+                        <h3 className="text-3xl font-extrabold text-slate-100">
                           {totalFunding > 0
                             ? `${(totalFunding / 1000000).toFixed(2)}M`
                             : "0"}{" "}
                           DZD
                         </h3>
                       </div>
-                      <div className="w-14 h-14 bg-green-50 text-green-600 rounded-xl flex items-center justify-center">
+                      <div className="w-14 h-14 bg-green-900/30 text-green-400 rounded-xl flex items-center justify-center">
                         <TrendingUp className="w-8 h-8" />
                       </div>
                     </div>
@@ -219,20 +219,20 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                <Card className="bg-white shadow-2xl border-0">
+                <Card className="bg-[#161b27] shadow-2xl border border-slate-800">
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-gray-500 text-sm font-bold mb-2">
+                        <p className="text-slate-400 text-sm font-bold mb-2">
                           Active Projects
                         </p>
-                        <h3 className="text-3xl font-extrabold text-blue-900">
+                        <h3 className="text-3xl font-extrabold text-slate-100">
                           {activeProjects > 0
                             ? activeProjects
                             : projects.length}
                         </h3>
                       </div>
-                      <div className="w-14 h-14 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center">
+                      <div className="w-14 h-14 bg-blue-900/30 text-blue-400 rounded-xl flex items-center justify-center">
                         <Briefcase className="w-8 h-8" />
                       </div>
                     </div>
@@ -245,18 +245,18 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
               >
-                <Card className="bg-white shadow-2xl border-0">
+                <Card className="bg-[#161b27] shadow-2xl border border-slate-800">
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-gray-500 text-sm font-bold mb-2">
+                        <p className="text-slate-400 text-sm font-bold mb-2">
                           Badge
                         </p>
-                        <h3 className="text-3xl font-extrabold text-blue-900">
+                        <h3 className="text-3xl font-extrabold text-slate-100">
                           {qualityProjects}
                         </h3>
                       </div>
-                      <div className="w-14 h-14 bg-yellow-50 text-yellow-600 rounded-xl flex items-center justify-center">
+                      <div className="w-14 h-14 bg-yellow-900/30 text-yellow-400 rounded-xl flex items-center justify-center">
                         <Award className="w-8 h-8" />
                       </div>
                     </div>
@@ -269,13 +269,13 @@ export default function Home() {
       </section>
 
       {/* ================= FEATURES SECTION ================= */}
-      <section className="py-20 bg-white/50">
+      <section className="py-20">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-blue-900 mb-4">
+            <h2 className="text-4xl font-bold text-slate-100 mb-4">
               Why CrowdAlgerie?
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-slate-400">
               We provide everything you need for your project&apos;s success
             </p>
           </div>
@@ -288,15 +288,15 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Card className="h-full bg-white shadow-lg hover:shadow-xl transition-all duration-300 border-0 hover:-translate-y-2">
+                <Card className="h-full bg-[#161b27] shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-800 hover:-translate-y-2">
                   <CardContent className="p-6 text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                      <feature.icon className="w-8 h-8 text-blue-700" />
+                    <div className="w-16 h-16 bg-blue-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                      <feature.icon className="w-8 h-8 text-blue-400" />
                     </div>
-                    <h3 className="text-xl font-bold text-blue-900 mb-3">
+                    <h3 className="text-xl font-bold text-slate-200 mb-3">
                       {feature.title}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-slate-400 leading-relaxed">
                       {feature.description}
                     </p>
                   </CardContent>

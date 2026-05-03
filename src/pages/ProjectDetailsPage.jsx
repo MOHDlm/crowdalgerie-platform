@@ -197,13 +197,13 @@ export default function ProjectDetailsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
+    <div className="min-h-screen bg-[#0a0e17]">
       {/* Header with Back Button */}
-      <div className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-20 border-b border-slate-200">
+      <div className="bg-[#0d1117]/90 backdrop-blur-md shadow-sm sticky top-0 z-20 border-b border-slate-800">
         <div className="container mx-auto px-4 py-4">
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-slate-700 hover:text-blue-600 transition-colors font-medium group"
+            className="flex items-center gap-2 text-slate-400 hover:text-blue-400 transition-colors font-medium group"
           >
             <ArrowRight
               size={20}
@@ -274,9 +274,9 @@ export default function ProjectDetailsPage() {
           {/* Left Column - Main Content */}
           <div className="lg:col-span-2 space-y-6">
             {/* Funding Progress Card */}
-            <div className="bg-white rounded-3xl p-8 shadow-xl border border-slate-200">
+            <div className="bg-[#161b27] rounded-3xl p-8 shadow-xl border border-slate-800">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold text-slate-900">
+                <h2 className="text-2xl font-bold text-slate-200">
                   Funding Progress
                 </h2>
                 <span className="text-3xl font-black text-blue-600">
@@ -285,7 +285,7 @@ export default function ProjectDetailsPage() {
               </div>
 
               <div className="mb-6">
-                <div className="w-full bg-slate-200 rounded-full h-4 overflow-hidden shadow-inner">
+                <div className="w-full bg-slate-700 rounded-full h-4 overflow-hidden shadow-inner">
                   <div
                     className="bg-gradient-to-r from-blue-500 to-blue-600 h-4 rounded-full transition-all duration-1000 shadow-lg relative overflow-hidden"
                     style={{ width: `${percentage}%` }}
@@ -298,20 +298,20 @@ export default function ProjectDetailsPage() {
               <div className="grid grid-cols-2 gap-6">
                 <div>
                   <p className="text-sm text-slate-500 mb-1">Raised</p>
-                  <p className="text-2xl font-bold text-slate-900">
+                  <p className="text-2xl font-bold text-slate-200">
                     {raised.toLocaleString()} DZD
                   </p>
                 </div>
                 <div>
                   <p className="text-sm text-slate-500 mb-1">Goal</p>
-                  <p className="text-2xl font-bold text-slate-900">
+                  <p className="text-2xl font-bold text-slate-200">
                     {goal.toLocaleString()} DZD
                   </p>
                 </div>
               </div>
 
               {percentage >= 100 && (
-                <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center gap-3">
+                <div className="mt-6 p-4 bg-green-900/20 border border-green-800/40 rounded-xl flex items-center gap-3">
                   <CheckCircle2
                     className="text-green-600"
                     size={24}
@@ -324,11 +324,11 @@ export default function ProjectDetailsPage() {
             </div>
 
             {/* Description Card */}
-            <div className="bg-white rounded-3xl p-8 shadow-xl border border-slate-200">
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">
+            <div className="bg-[#161b27] rounded-3xl p-8 shadow-xl border border-slate-800">
+              <h2 className="text-2xl font-bold text-slate-200 mb-4">
                 About This Project
               </h2>
-              <p className="text-slate-600 leading-relaxed text-lg">
+              <p className="text-slate-400 leading-relaxed text-lg">
                 {project.description ||
                   "No description available for this project."}
               </p>
@@ -336,11 +336,11 @@ export default function ProjectDetailsPage() {
 
             {/* Additional Details */}
             {(project.details || project.long_description) && (
-              <div className="bg-white rounded-3xl p-8 shadow-xl border border-slate-200">
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">
+              <div className="bg-[#161b27] rounded-3xl p-8 shadow-xl border border-slate-800">
+                <h2 className="text-2xl font-bold text-slate-200 mb-4">
                   Project Details
                 </h2>
-                <div className="prose max-w-none text-slate-600">
+                <div className="prose max-w-none text-slate-400">
                   <p>{project.details || project.long_description}</p>
                 </div>
               </div>
@@ -370,12 +370,12 @@ export default function ProjectDetailsPage() {
             </div>
 
             {/* Statistics Cards */}
-            <div className="bg-white rounded-3xl p-6 shadow-xl border border-slate-200 space-y-4">
-              <h3 className="text-xl font-bold text-slate-900 mb-4">
+            <div className="bg-[#161b27] rounded-3xl p-6 shadow-xl border border-slate-800 space-y-4">
+              <h3 className="text-xl font-bold text-slate-200 mb-4">
                 Quick Stats
               </h3>
 
-              <div className="p-5 rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200">
+              <div className="p-5 rounded-2xl bg-blue-900/20 border border-blue-800/40">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="p-2 bg-blue-500 rounded-lg">
                     <Target
@@ -383,7 +383,7 @@ export default function ProjectDetailsPage() {
                       size={20}
                     />
                   </div>
-                  <span className="text-sm font-medium text-slate-600">
+                  <span className="text-sm font-medium text-slate-400">
                     Funding Progress
                   </span>
                 </div>
@@ -392,7 +392,7 @@ export default function ProjectDetailsPage() {
                 </p>
               </div>
 
-              <div className="p-5 rounded-2xl bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200">
+              <div className="p-5 rounded-2xl bg-purple-900/20 border border-purple-800/40">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="p-2 bg-purple-500 rounded-lg">
                     <Users
@@ -400,7 +400,7 @@ export default function ProjectDetailsPage() {
                       size={20}
                     />
                   </div>
-                  <span className="text-sm font-medium text-slate-600">
+                  <span className="text-sm font-medium text-slate-400">
                     Total Investors
                   </span>
                 </div>
@@ -409,7 +409,7 @@ export default function ProjectDetailsPage() {
                 </p>
               </div>
 
-              <div className="p-5 rounded-2xl bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200">
+              <div className="p-5 rounded-2xl bg-orange-900/20 border border-orange-800/40">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="p-2 bg-orange-500 rounded-lg">
                     <Clock
@@ -417,7 +417,7 @@ export default function ProjectDetailsPage() {
                       size={20}
                     />
                   </div>
-                  <span className="text-sm font-medium text-slate-600">
+                  <span className="text-sm font-medium text-slate-400">
                     Days Remaining
                   </span>
                 </div>

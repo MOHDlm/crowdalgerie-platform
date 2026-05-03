@@ -93,7 +93,7 @@ export default function CreateProposal() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 p-6 pt-24">
+    <div className="min-h-screen bg-[#0a0e17] p-6 pt-24">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <motion.div
@@ -130,9 +130,9 @@ export default function CreateProposal() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2 }}
         >
-          <Card className="border-2 border-slate-200 shadow-xl">
-            <CardHeader className="bg-gradient-to-r from-slate-50 to-blue-50 border-b">
-              <CardTitle>تفاصيل المقترح</CardTitle>
+          <Card className="border border-slate-800 shadow-xl bg-[#161b27]">
+            <CardHeader className="bg-[#161b27] border-b border-slate-800">
+              <CardTitle className="text-slate-200">تفاصيل المقترح</CardTitle>
             </CardHeader>
 
             <CardContent className="p-8">

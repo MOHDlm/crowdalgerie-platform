@@ -14,10 +14,10 @@ const statusLabels = {
 };
 
 const statusColors = {
-  voting: "bg-yellow-100 text-yellow-800",
-  active: "bg-green-100 text-green-800",
-  funded: "bg-blue-100 text-blue-800",
-  closed: "bg-gray-100 text-gray-800"
+  voting: "bg-yellow-900/30 text-yellow-300",
+  active: "bg-green-900/30 text-green-300",
+  funded: "bg-blue-900/30 text-blue-300",
+  closed: "bg-slate-800 text-slate-400"
 };
 
 export default function MyProjectCard({ project, onEdit }) {
@@ -28,14 +28,14 @@ export default function MyProjectCard({ project, onEdit }) {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
     >
-      <Card className="bg-white/80 backdrop-blur-sm hover:shadow-xl transition-all duration-300 border-0">
+      <Card className="bg-[#161b27] hover:shadow-xl transition-all duration-300 border border-slate-800">
         <CardHeader>
           <div className="flex items-start justify-between">
             <div>
-              <CardTitle className="text-xl text-blue-900 mb-2">
+              <CardTitle className="text-xl text-slate-200 mb-2">
                 {project.name_ar}
               </CardTitle>
-              <p className="text-gray-600">{project.company_name}</p>
+              <p className="text-slate-400">{project.company_name}</p>
             </div>
             <div className="flex gap-2 items-start">
               <Badge className={statusColors[project.status]}>
@@ -51,29 +51,29 @@ export default function MyProjectCard({ project, onEdit }) {
         </CardHeader>
 
         <CardContent className="space-y-4">
-          <p className="text-gray-700 line-clamp-2">{project.description_ar}</p>
+          <p className="text-slate-400 line-clamp-2">{project.description_ar}</p>
 
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
-              <span className="text-gray-600">التمويل المحقق</span>
-              <span className="font-bold text-blue-900">{fundingPercentage.toFixed(0)}%</span>
+              <span className="text-slate-500">التمويل المحقق</span>
+              <span className="font-bold text-slate-200">{fundingPercentage.toFixed(0)}%</span>
             </div>
             <Progress value={fundingPercentage} className="h-2" />
             <div className="flex justify-between text-sm">
-              <span className="font-semibold text-blue-900">
+              <span className="font-semibold text-slate-200">
                 {(project.current_funding / 1000).toFixed(0)} ألف دج
               </span>
-              <span className="text-gray-600">
+              <span className="text-slate-500">
                 من {(project.funding_goal / 1000).toFixed(0)} ألف دج
               </span>
             </div>
           </div>
 
           {project.status === 'voting' && (
-            <div className="bg-yellow-50 rounded-lg p-3">
+            <div className="bg-yellow-900/20 border border-yellow-800/40 rounded-lg p-3">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-700">التصويت</span>
-                <span className="font-bold text-yellow-700">
+                <span className="text-sm text-slate-400">التصويت</span>
+                <span className="font-bold text-yellow-400">
                   {project.votes_count} / {project.votes_needed}
                 </span>
               </div>
@@ -83,16 +83,16 @@ export default function MyProjectCard({ project, onEdit }) {
           <div className="flex gap-3 pt-2">
             <Button
               variant="outline"
-              className="flex-1"
+              className="flex-1 border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-slate-100"
               onClick={() => onEdit(project)}
             >
               <Edit className="w-4 h-4 ml-2" />
               تعديل
             </Button>
             {project.return_percentage && (
-              <div className="flex items-center gap-2 bg-green-50 px-3 rounded-lg">
-                <TrendingUp className="w-4 h-4 text-green-600" />
-                <span className="font-bold text-green-700">{project.return_percentage}%</span>
+              <div className="flex items-center gap-2 bg-green-900/20 border border-green-800/40 px-3 rounded-lg">
+                <TrendingUp className="w-4 h-4 text-green-400" />
+                <span className="font-bold text-green-400">{project.return_percentage}%</span>
               </div>
             )}
           </div>
