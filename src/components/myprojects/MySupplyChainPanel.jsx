@@ -264,7 +264,7 @@ function MiniMap({ nodes }) {
           height: 240,
           borderRadius: 8,
           overflow: "hidden",
-          border: "1px solid #e2e8f0",
+          border: "1px solid rgba(255,255,255,0.1)",
         }}
       />
     </>
@@ -354,7 +354,7 @@ export default function MySupplyChainPanel() {
     <div className="space-y-5">
       {/* Project selector */}
       <div>
-        <label className="block text-sm font-semibold text-slate-700 mb-1">
+        <label className="block text-sm font-semibold text-slate-300 mb-1">
           اختر مشروعك
         </label>
         <select
@@ -364,7 +364,7 @@ export default function MySupplyChainPanel() {
               myProjects.find((p) => p.id === e.target.value) || null,
             )
           }
-          className="w-full border-2 border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="w-full bg-[#0a0e17] border border-slate-700 text-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           dir="rtl"
         >
           <option value="">-- اختر مشروعاً --</option>
@@ -389,10 +389,10 @@ export default function MySupplyChainPanel() {
           {/* Editor */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <h4 className="font-bold text-slate-800 text-sm">
+              <h4 className="font-bold text-slate-200 text-sm">
                 🔗 نقاط سلسلة التوريد
               </h4>
-              <span className="text-xs text-slate-400">
+              <span className="text-xs text-slate-500">
                 {nodes.length} نقطة
               </span>
             </div>
@@ -405,10 +405,10 @@ export default function MySupplyChainPanel() {
                     initial={{ opacity: 0, y: -6 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, x: 16 }}
-                    className="bg-slate-50 border border-slate-200 rounded-xl p-3"
+                    className="bg-slate-800/50 border border-slate-700 rounded-xl p-3"
                   >
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-xs font-bold text-blue-600">
+                      <span className="text-xs font-bold text-blue-400">
                         نقطة {idx + 1}
                       </span>
                       <button
@@ -420,7 +420,7 @@ export default function MySupplyChainPanel() {
                     </div>
                     <div className="grid grid-cols-2 gap-2">
                       <div>
-                        <label className="text-xs text-slate-500 block mb-0.5">
+                        <label className="text-xs text-slate-400 block mb-0.5">
                           الاسم
                         </label>
                         <input
@@ -429,11 +429,11 @@ export default function MySupplyChainPanel() {
                             updateNode(idx, "name", e.target.value)
                           }
                           placeholder="مثال: مستودع وهران"
-                          className="w-full border rounded px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-blue-400"
+                          className="w-full bg-[#0a0e17] border border-slate-700 text-slate-200 rounded px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-blue-400 placeholder:text-slate-600"
                         />
                       </div>
                       <div>
-                        <label className="text-xs text-slate-500 block mb-0.5">
+                        <label className="text-xs text-slate-400 block mb-0.5">
                           النوع
                         </label>
                         <select
@@ -441,7 +441,7 @@ export default function MySupplyChainPanel() {
                           onChange={(e) =>
                             updateNode(idx, "type", e.target.value)
                           }
-                          className="w-full border rounded px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-blue-400"
+                          className="w-full bg-[#0a0e17] border border-slate-700 text-slate-200 rounded px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-blue-400 placeholder:text-slate-600"
                         >
                           {NODE_TYPES.map((t) => (
                             <option
@@ -454,7 +454,7 @@ export default function MySupplyChainPanel() {
                         </select>
                       </div>
                       <div>
-                        <label className="text-xs text-slate-500 block mb-0.5">
+                        <label className="text-xs text-slate-400 block mb-0.5">
                           الولاية
                         </label>
                         <select
@@ -462,7 +462,7 @@ export default function MySupplyChainPanel() {
                           onChange={(e) =>
                             updateNode(idx, "wilaya", e.target.value)
                           }
-                          className="w-full border rounded px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-blue-400"
+                          className="w-full bg-[#0a0e17] border border-slate-700 text-slate-200 rounded px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-blue-400 placeholder:text-slate-600"
                           dir="rtl"
                         >
                           <option value="">-- اختر --</option>
@@ -477,7 +477,7 @@ export default function MySupplyChainPanel() {
                         </select>
                       </div>
                       <div>
-                        <label className="text-xs text-slate-500 block mb-0.5">
+                        <label className="text-xs text-slate-400 block mb-0.5">
                           ملاحظات
                         </label>
                         <input
@@ -486,7 +486,7 @@ export default function MySupplyChainPanel() {
                             updateNode(idx, "notes", e.target.value)
                           }
                           placeholder="اختياري"
-                          className="w-full border rounded px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-blue-400"
+                          className="w-full bg-[#0a0e17] border border-slate-700 text-slate-200 rounded px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-blue-400 placeholder:text-slate-600"
                         />
                       </div>
                     </div>
@@ -498,7 +498,7 @@ export default function MySupplyChainPanel() {
             <div className="flex gap-2">
               <button
                 onClick={addNode}
-                className="flex-1 py-2 border-2 border-dashed border-blue-300 rounded-lg text-blue-600 text-xs font-semibold hover:border-blue-500 hover:bg-blue-50 transition-all flex items-center justify-center gap-1"
+                className="flex-1 py-2 border-2 border-dashed border-slate-700 rounded-lg text-blue-400 text-xs font-semibold hover:border-blue-500 hover:bg-slate-800 transition-all flex items-center justify-center gap-1"
               >
                 <Plus size={13} /> إضافة نقطة
               </button>
@@ -526,7 +526,7 @@ export default function MySupplyChainPanel() {
             </div>
 
             {saved && (
-              <p className="text-xs text-green-600 mt-2 text-center">
+              <p className="text-xs text-green-400 mt-2 text-center">
                 ✓ ستظهر على خريطة Badge تلقائياً
               </p>
             )}
@@ -535,11 +535,11 @@ export default function MySupplyChainPanel() {
           {/* Map preview */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <h4 className="font-bold text-slate-800 text-sm">
+              <h4 className="font-bold text-slate-200 text-sm">
                 🗺️ معاينة الشبكة
               </h4>
               {nodes.filter((n) => WILAYA_COORDS[n.wilaya]).length > 0 && (
-                <span className="text-xs text-green-600 font-semibold">
+                <span className="text-xs text-green-400 font-semibold">
                   ● {nodes.filter((n) => WILAYA_COORDS[n.wilaya]).length} نقطة
                 </span>
               )}

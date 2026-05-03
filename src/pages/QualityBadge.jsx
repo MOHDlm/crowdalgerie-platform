@@ -29,8 +29,9 @@ import {
   Wrench,
   Users,
 } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
+import MySupplyChainPanel from "../components/myprojects/MySupplyChainPanel";
 
 // ─── CONSTANTS ────────────────────────────────────────────────────────────────
 const CAT_COLORS = {
@@ -917,7 +918,7 @@ function AlgeriaMap() {
 }
 
 // ─── MODULE: SUPPLY CHAINS ────────────────────────────────────────────────────
-function ModuleSupplyChain() {
+function ModuleSupplyChain({ setShowMyChain }) {
   const [expandedId, setExpandedId] = useState(null);
 
   const { data: projects = [], isLoading } = useQuery({
@@ -1077,13 +1078,13 @@ function ModuleSupplyChain() {
                         );
                       })}
                     </div>
-                    <Link
-                      to="/SupplyChain"
-                      className="flex items-center justify-center gap-2 mt-4 py-2 text-xs text-slate-500 hover:text-slate-300 border border-slate-800 hover:border-slate-700 rounded-lg transition-colors"
+                    <button
+                      onClick={() => setShowMyChain(true)}
+                      className="w-full flex items-center justify-center gap-2 mt-4 py-2 text-xs text-sky-400 hover:text-sky-300 border border-slate-800 hover:border-sky-800 rounded-lg transition-colors"
                     >
                       <ArrowRight size={11} />
-                      فتح سلاسل التوريد الكاملة
-                    </Link>
+                      سلسلة التوريد الخاصة بمشروعي
+                    </button>
                   </div>
                 )}
               </div>
@@ -1096,6 +1097,8 @@ function ModuleSupplyChain() {
     </div>
   );
 }
+
+ModuleSupplyChain.propTypes = { setShowMyChain: PropTypes.func.isRequired };
 
 // ─── MODULE: SHARED SERVICES ──────────────────────────────────────────────────
 function ModuleSharedServices() {
@@ -1984,6 +1987,7 @@ function ModuleSubcontracting() {
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
 export default function QualityBadge() {
   const [activeModule, setActiveModule] = useState("supply-chain");
+  const [showMyChain, setShowMyChain] = useState(false);
   const navigate = useNavigate();
 
   const modules = [
@@ -2140,21 +2144,13 @@ export default function QualityBadge() {
             }}
           >
             {[
-              { label: "إنشاء تكتل", icon: Users, path: "/SupplyChain" },
-              {
-                label: "إنشاء مقترح",
-                icon: FilePlus,
-                path: "/create-proposal",
-              },
-              {
-                label: "إنشاء خدمة",
-                icon: Wrench,
-                path: "/admin/shared-services",
-              },
-            ].map(({ label, icon: Icon, path }) => (
+              { label: "إنشاء تكتل", icon: Users, action: () => setShowMyChain(true) },
+              { label: "إنشاء مقترح", icon: FilePlus, action: () => navigate("/create-proposal") },
+              { label: "إنشاء خدمة", icon: Wrench, action: () => navigate("/admin/shared-services") },
+            ].map(({ label, icon: Icon, action }) => (
               <button
-                key={path}
-                onClick={() => navigate(path)}
+                key={label}
+                onClick={action}
                 className="w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-1 text-left transition-all text-teal-500 hover:text-teal-300 hover:bg-teal-500/10"
               >
                 <div className="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 bg-teal-500/10 border border-teal-500/20">
@@ -2183,7 +2179,7 @@ export default function QualityBadge() {
             key={activeModule}
             className="mod-fade"
           >
-            {activeModule === "supply-chain" && <ModuleSupplyChain />}
+            {activeModule === "supply-chain" && <ModuleSupplyChain setShowMyChain={setShowMyChain} />}
             {activeModule === "shared-services" && <ModuleSharedServices />}
             {activeModule === "decision-making" && <ModuleDecisionMaking />}
             {activeModule === "funding-priority" && <ModuleFundingPriority />}
@@ -2194,6 +2190,42 @@ export default function QualityBadge() {
           </div>
         </main>
       </div>
+
+      {/* ── MY SUPPLY CHAIN MODAL ── */}
+      {showMyChain && (
+        <div
+          style={{ position: "fixed", inset: 0, zIndex: 2000, display: "flex", alignItems: "center", justifyContent: "center", padding: 16 }}
+        >
+          <div
+            style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.65)", backdropFilter: "blur(4px)" }}
+            onClick={() => setShowMyChain(false)}
+          />
+          <div
+            style={{ position: "relative", background: "#161b27", borderRadius: 20, boxShadow: "0 24px 64px rgba(0,0,0,0.5)", width: "100%", maxWidth: 900, maxHeight: "90vh", overflow: "hidden", display: "flex", flexDirection: "column", border: "1px solid rgba(255,255,255,0.08)" }}
+          >
+            {/* Header */}
+            <div style={{ background: "linear-gradient(135deg,#1e3a8a,#4c1d95)", color: "white", padding: "20px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", flexShrink: 0 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                <span style={{ fontSize: 22 }}>🔗</span>
+                <div>
+                  <h3 style={{ margin: 0, fontSize: 17, fontWeight: "bold" }}>سلسلة التوريد الخاصة بمشروعي</h3>
+                  <p style={{ margin: 0, fontSize: 12, opacity: 0.75 }}>أضف نقاط التوريد وستظهر على الخريطة التفاعلية تلقائياً</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowMyChain(false)}
+                style={{ background: "rgba(255,255,255,.15)", border: "none", color: "white", borderRadius: 8, width: 36, height: 36, cursor: "pointer", fontSize: 18, display: "flex", alignItems: "center", justifyContent: "center" }}
+              >
+                <X size={18} />
+              </button>
+            </div>
+            {/* Body */}
+            <div style={{ flex: 1, overflowY: "auto", padding: 24 }}>
+              <MySupplyChainPanel />
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
