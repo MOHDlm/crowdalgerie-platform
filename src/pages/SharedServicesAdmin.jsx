@@ -352,7 +352,7 @@ export default function SharedServicesAdmin() {
                       <select
                         value={formData.wilaya}
                         onChange={(e) => set("wilaya", e.target.value)}
-                        className={`${inputCls} bg-white border-indigo-300 focus:border-indigo-600`}
+                        className={`${inputCls} border-indigo-700 focus:border-indigo-500`}
                         dir="rtl"
                       >
                         <option value="">-- اختر الولاية --</option>

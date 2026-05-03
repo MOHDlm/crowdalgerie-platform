@@ -1124,7 +1124,7 @@ function ModuleSharedServices() {
   const availableCount = services.filter((s) => s.available).length;
 
   return (
-    <div className="p-6 max-w-5xl">
+    <div className="p-6 max-w-5xl mx-auto">
       <div className="mb-6">
         <h2 className="text-lg font-semibold text-slate-100">
           Shared Services
@@ -1610,7 +1610,7 @@ function ModuleFundingPriority() {
   });
 
   return (
-    <div className="p-6 max-w-4xl">
+    <div className="p-6 max-w-4xl mx-auto">
       <div className="mb-6">
         <h2 className="text-lg font-semibold text-slate-100">
           Funding Priority
@@ -1736,7 +1736,7 @@ function ModuleEnhancedCredibility() {
   });
 
   return (
-    <div className="p-6 max-w-4xl">
+    <div className="p-6 max-w-4xl mx-auto">
       <div className="mb-6">
         <h2 className="text-lg font-semibold text-slate-100">
           Enhanced Credibility
@@ -1900,7 +1900,7 @@ function ModuleSubcontracting() {
   ];
 
   return (
-    <div className="p-6 max-w-4xl">
+    <div className="p-6 max-w-4xl mx-auto">
       <div className="mb-6">
         <h2 className="text-lg font-semibold text-slate-100">
           Subcontracting Opportunities

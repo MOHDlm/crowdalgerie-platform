@@ -178,7 +178,7 @@ export default function CreateProposal() {
 
                   {/* Title */}
                   <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-2">
+                    <label className="block text-sm font-bold text-slate-300 mb-2">
                       عنوان المقترح *
                     </label>
                     <input
@@ -187,14 +187,14 @@ export default function CreateProposal() {
                       value={formData.title}
                       onChange={handleChange}
                       placeholder="مثال: الموافقة على استراتيجية التسويق الجديدة"
-                      className="w-full px-4 py-3 border-2 border-slate-300 rounded-lg focus:border-orange-500 focus:outline-none transition-all"
+                      className="w-full px-4 py-3 bg-[#0a0e17] text-slate-200 border border-slate-700 rounded-lg focus:border-orange-500 focus:outline-none transition-all placeholder:text-slate-600"
                       disabled={isSubmitting}
                     />
                   </div>
 
                   {/* Description */}
                   <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-2">
+                    <label className="block text-sm font-bold text-slate-300 mb-2">
                       الوصف التفصيلي *
                     </label>
                     <textarea
@@ -203,14 +203,14 @@ export default function CreateProposal() {
                       onChange={handleChange}
                       placeholder="اشرح تفاصيل المقترح والخلفية..."
                       rows="4"
-                      className="w-full px-4 py-3 border-2 border-slate-300 rounded-lg focus:border-orange-500 focus:outline-none transition-all"
+                      className="w-full px-4 py-3 bg-[#0a0e17] text-slate-200 border border-slate-700 rounded-lg focus:border-orange-500 focus:outline-none transition-all placeholder:text-slate-600"
                       disabled={isSubmitting}
                     />
                   </div>
 
                   {/* Impact */}
                   <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-2">
+                    <label className="block text-sm font-bold text-slate-300 mb-2">
                       التأثير المتوقع
                     </label>
                     <textarea
@@ -219,7 +219,7 @@ export default function CreateProposal() {
                       onChange={handleChange}
                       placeholder="ما هو التأثير المتوقع من هذا المقترح؟"
                       rows="3"
-                      className="w-full px-4 py-3 border-2 border-slate-300 rounded-lg focus:border-orange-500 focus:outline-none transition-all"
+                      className="w-full px-4 py-3 bg-[#0a0e17] text-slate-200 border border-slate-700 rounded-lg focus:border-orange-500 focus:outline-none transition-all placeholder:text-slate-600"
                       disabled={isSubmitting}
                     />
                   </div>
@@ -227,14 +227,14 @@ export default function CreateProposal() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Category */}
                     <div>
-                      <label className="block text-sm font-bold text-slate-700 mb-2">
+                      <label className="block text-sm font-bold text-slate-300 mb-2">
                         الفئة
                       </label>
                       <select
                         name="category"
                         value={formData.category}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border-2 border-slate-300 rounded-lg focus:border-orange-500 focus:outline-none transition-all"
+                        className="w-full px-4 py-3 bg-[#0a0e17] text-slate-200 border border-slate-700 rounded-lg focus:border-orange-500 focus:outline-none transition-all placeholder:text-slate-600"
                         disabled={isSubmitting}
                       >
                         <option value="General">عام</option>
@@ -248,14 +248,14 @@ export default function CreateProposal() {
 
                     {/* Priority */}
                     <div>
-                      <label className="block text-sm font-bold text-slate-700 mb-2">
+                      <label className="block text-sm font-bold text-slate-300 mb-2">
                         الأولوية
                       </label>
                       <select
                         name="priority"
                         value={formData.priority}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border-2 border-slate-300 rounded-lg focus:border-orange-500 focus:outline-none transition-all"
+                        className="w-full px-4 py-3 bg-[#0a0e17] text-slate-200 border border-slate-700 rounded-lg focus:border-orange-500 focus:outline-none transition-all placeholder:text-slate-600"
                         disabled={isSubmitting}
                       >
                         <option value="low">منخفضة</option>
@@ -267,7 +267,7 @@ export default function CreateProposal() {
 
                   {/* Deadline */}
                   <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-2">
+                    <label className="block text-sm font-bold text-slate-300 mb-2">
                       الموعد النهائي *
                     </label>
                     <input
@@ -275,14 +275,14 @@ export default function CreateProposal() {
                       name="deadline"
                       value={formData.deadline}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border-2 border-slate-300 rounded-lg focus:border-orange-500 focus:outline-none transition-all"
+                      className="w-full px-4 py-3 bg-[#0a0e17] text-slate-200 border border-slate-700 rounded-lg focus:border-orange-500 focus:outline-none transition-all placeholder:text-slate-600"
                       disabled={isSubmitting}
                     />
                   </div>
 
                   {/* Proposed By */}
                   <div>
-                    <label className="block text-sm font-bold text-slate-700 mb-2">
+                    <label className="block text-sm font-bold text-slate-300 mb-2">
                       المقترح من قبل
                     </label>
                     <input
@@ -290,7 +290,7 @@ export default function CreateProposal() {
                       name="proposedBy"
                       value={formData.proposedBy}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border-2 border-slate-300 rounded-lg focus:border-orange-500 focus:outline-none transition-all"
+                      className="w-full px-4 py-3 bg-[#0a0e17] text-slate-200 border border-slate-700 rounded-lg focus:border-orange-500 focus:outline-none transition-all placeholder:text-slate-600"
                       disabled={isSubmitting}
                     />
                   </div>
